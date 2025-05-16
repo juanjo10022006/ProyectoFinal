@@ -55,10 +55,14 @@ function resolverTorneo(torneo) {
         return a.name.localeCompare(b.name);                   // Ascendente por nombre
     });
 
-    // Generar salida
-    const outputLines = teamsArray.map((team, index) => {
+    // Generar salida con el nombre del torneo al inicio
+    const outputLines = [
+        `Torneo: ${tournamentName}`
+    ];
+
+    teamsArray.forEach((team, index) => {
         const rank = index + 1;
-        return `${rank}) ${team.name} ${team.points}p, ${team.wins}w, ${team.goalsAgainst}a`;
+        outputLines.push(`${rank}) ${team.name} ${team.points}p, ${team.wins}w, ${team.goalsAgainst}a`);
     });
 
     return outputLines.join("\n");
